@@ -2,7 +2,7 @@ function robot = createRigidTreeModel()
 
 
 T01 = getTransformation(pi/2, 0.03, 0.163, 0);
-T12 = getTransformation(0, 0.34, 0, 0);
+T12 = getTransformation(0, 0.34, 0, pi/2);
 T23 = getTransformation(0,0, 0.197, 0);
 T34 = getTransformation(-pi/2, 0, 0.143, 0);
 T4f = getTransformation(pi/2,0,0,0)*getTransformation(0, 0, 0.08, 0);
@@ -15,7 +15,6 @@ addBody(robot, body1,'base')
 
 body2 = rigidBody('body2');
 jnt2 = rigidBodyJoint('jnt2','revolute');
-jnt2.HomePosition = pi/2; % User defined
 setFixedTransform(jnt2,T01);
 body2.Joint = jnt2;
 addBody(robot,body2,'body1'); % Add body2 to body1
@@ -50,5 +49,6 @@ setFixedTransform(jnt6,T4f);
 body6.Joint = jnt6;
 addBody(robot,body6,'body5'); % Add body4 to body2
 
-robot.Gravity = [0 0 -9.8];
+robot.Gravity = [0 0 9.8];
+robot.DataFormat = 'row';
 end
