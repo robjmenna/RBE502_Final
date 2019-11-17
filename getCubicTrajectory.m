@@ -1,4 +1,3 @@
-
 function trajectory = getCubicTrajectory(q0, v0, qf, vf, t0, tf)
     b = [q0; v0; qf; vf;];
     M = [ 1 t0 t0^2 t0^3;
