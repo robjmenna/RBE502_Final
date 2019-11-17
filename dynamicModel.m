@@ -4,8 +4,8 @@ clear variables
 syms q1(t) q2(t) q3(t) q4(t) q5(t) q6(t)
 syms dq1(t) dq2(t) dq3(t) dq4(t) dq5(t) dq6(t)
 syms d2q1(t) d2q2(t) d2q3(t) d2q4(t) d2q5(t) d2q6(t)
-syms pi g
 syms m1 m2 m3 mp
+g = 9.8;
 
 %%
 d = [0.163 0 0 0.34 0 0.08];
@@ -85,7 +85,6 @@ clearvars
 syms q1(t) q2(t) q3(t) q4(t) q5(t) q6(t)
 syms dq1(t) dq2(t) dq3(t) dq4(t) dq5(t) dq6(t)
 syms d2q1(t) d2q2(t) d2q3(t) d2q4(t) d2q5(t) d2q6(t)
-syms pi g
 syms m1 m2 m3 mp
 
 load('vars/torques.mat');
@@ -151,6 +150,14 @@ C5 = simplify(expand(torques(5) - M(5,:)*[d2q1(t) d2q2(t) d2q3(t) d2q4(t) d2q5(t
 C6 = simplify(expand(torques(6) - M(6,:)*[d2q1(t) d2q2(t) d2q3(t) d2q4(t) d2q5(t) d2q6(t)].' - G(6)));
 C = [C1;C2;C3;C4;C5;C6];
 
-save('vars/M.mat','M');
-save('vars/G.mat','G');
-save('vars/C.mat','C');
+syms th1 th2 th3 th4 th5 th6
+syms dth1 dth2 dth3 dth4 dth5 dth6
+
+M = subs(M, [q1(t) q2(t) q3(t) q4(t) q5(t) q6(t)], [th1 th2 th3 th4 th5 th6]);
+G = subs(G, [q1(t) q2(t) q3(t) q4(t) q5(t) q6(t)], [th1 th2 th3 th4 th5 th6]);
+C = subs(C, [q1(t) q2(t) q3(t) q4(t) q5(t) q6(t) dq1(t) dq2(t) dq3(t) dq4(t) dq5(t) dq6(t)],...
+    [th1 th2 th3 th4 th5 th6 dth1 dth2 dth3 dth4 dth5 dth6]);
+
+matlabFunction(M,'File','getMassMatrix','Vars',{m1,m2,m3,mp,[th1 th2 th3 th4 th5 th6]});
+matlabFunction(C,'File','getVelocityMatrix','Vars',{m1,m2,m3,mp,[th1 th2 th3 th4 th5 th6], [dth1 dth2 dth3 dth4 dth5 dth6]});
+matlabFunction(G,'File','getGravityMatrix','Vars',{m1,m2,m3,mp,[th1 th2 th3 th4 th5 th6]});
