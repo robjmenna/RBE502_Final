@@ -1,17 +1,15 @@
-function plotTrajectory(T, trajectory)
-d1 = [];
+function plotTrajectory(T, X, trajectory)
+numberOfJoints = 6;
+d = [];
 for i= 1:size(T,1)
     temp = trajectory(T(i));
-d1 = [d1 temp(:,1)];
+    d = [d (temp(1,:) - X(i,1:6)).'];
 end
 
 figure
-subplot(3,1,1)
-plot(T,d1(1,:));
-subplot(3,1,2)
-plot(T,d1(2,:));
-subplot(3,1,3)
-plot(T,d1(3,:));
-
+for i = 1:numberOfJoints
+subplot(numberOfJoints,1,i)
+plot(T,d(i,:));
+end
 end
 

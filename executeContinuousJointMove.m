@@ -2,7 +2,7 @@ function executeContinuousJointMove()
 close all
 clear
 
-numberOfPoints = input('Please enterthe number of positions that will be taught: ');
+numberOfPoints = input('Please enter the number of positions that will be taught: ');
 
 q = [[]];
 t = [];
@@ -16,9 +16,9 @@ lastIndex = size(t,2);
 robot = createRigidTreeModel();
 trajectory = planContinuousTrajectory(t,q);
 Gd = robot.gravityTorque(q(lastIndex,:));
-controlLaw = @(xd,x)calculatePdControlLaw(xd, x, 100, 100, Gd.');
+controlLaw = @(xd,x)calculatePdControlLaw(xd, x, 10, 1000, Gd.');
 [T, X, ~] = moveRobot(t, q, robot, trajectory, controlLaw);
-plotTrajectory(T,trajectory);
+plotTrajectory(T, X, trajectory);
 showMotion(T, X(:,1:6), robot);
 end
 
