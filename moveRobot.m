@@ -1,10 +1,10 @@
-function [T, X, torque] = moveRobot(t, q, robot, trajectory, controlLaw)
+function [T, X, torque] = moveRobot(t0, tf, q0, robot, trajectory, controlLaw)
 
-lastIndex = size(t,2);
-numberOfJoints = size(q,2);
-x0 = [q(1,:) zeros(1, 6)];
-xf = [q(lastIndex,:) zeros(1, 6)];
-[T, X, torque] = solver(t(1), t(lastIndex), x0, robot, controlLaw, trajectory);
+%lastIndex = size(t,2);
+%numberOfJoints = size(q0,2);
+x0 = [q0 zeros(1, 6)];
+%xf = [q(lastIndex,:) zeros(1, 6)];
+[T, X, torque] = solver(t0, tf, x0, robot, controlLaw, trajectory);
 
 
 %%
