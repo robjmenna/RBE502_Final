@@ -8,15 +8,19 @@ while dtMax < 0.05
     dtMax = i*dt; 
 end
 
-figure
+%v = VideoWriter('myFile.avi');
+fig = figure;
+%open(v);
 for j = i:i:size(T,1)
      robot.show(X(j,:));
-     axis([-1 1 -1 1 0 1]);
+     axis([0 0.8 -0.5 0.5 0 0.8]);
+     %v.writeVideo(getframe(fig));
      pause(dtMax);
 end
 
+%close(v);
 robot.show(X(size(X,1),:));
-axis([-1 1 -1 1 0 1]);
+axis([0 0.8 -0.5 0.5 0 0.8]);
 
 end
 

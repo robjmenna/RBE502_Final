@@ -16,9 +16,9 @@ lastIndex = size(t,2);
 robot = createRigidTreeModel();
 trajectory = planContinuousTrajectory(t,q);
 Gd = robot.gravityTorque(q(lastIndex,:));
-controlLaw = @(xd,x)calculatePdControlLaw(xd, x, 10, 10000, Gd.');
+controlLaw = @(xd,x)calculatePdControlWithGd(xd, x, 10, 10000, Gd.');
 [T, X, ~] = moveRobot(t(1), t(lastIndex), q(1,:), robot, trajectory, controlLaw);
-plotTrajectory(T, X, trajectory);
+plotTrajectory(T, X, trajectory,t, q, robot);
 showMotion(T, X(:,1:6), robot);
 end
 

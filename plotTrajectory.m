@@ -7,9 +7,11 @@ for i= 1:size(T,1)
     %jExp(i,:) = temp(1,:);
     error(i,:) = (temp(1,:) - X(i,1:6));
     temp = robot.getTransform(X(i,1:6), 'body6');
-    xPos(i,:) = temp(1:3,4);
-    
+    xPos(i,:) = temp(1:3,4);    
 end
+
+%save('error-g.mat', 'error');
+%save('T');
 
 figure
 for i = 1:numberOfJoints
