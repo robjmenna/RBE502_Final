@@ -4,6 +4,7 @@ user to enter position and orientation waypoints, and then produce a figure
 that traces the motion defined by feeding the waypoints to the trajectory 
 generator. Once the function starts, the user will be prompted for input in
 the MATLAB command window. An example of this function in use is provided below.
+The Arm Motion.avi file demonstrates the output of this command.
 
 >> executeContinuousWorkspaceMove
 Please enter the number of positions that will be taught: 5
