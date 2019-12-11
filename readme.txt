@@ -1,4 +1,5 @@
 This project contains two top level functions. 
+The MATLAB Robotics Systems Toolbox is required.
 
 The first is executeContinuousWorkspaceMove. This command will allow the 
 user to enter position and orientation waypoints, and then produce a figure 
