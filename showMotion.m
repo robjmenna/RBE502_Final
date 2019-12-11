@@ -19,8 +19,6 @@ for j = i:i:size(T,1)
 end
 
 %close(v);
-robot.show(X(size(X,1),:));
-axis([0 0.8 -0.5 0.5 0 0.8]);
 
 end
 

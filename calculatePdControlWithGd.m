@@ -1,6 +1,9 @@
-function tau = calculatePdControlLawWithGd(xd, x, Kv, Kp, Gd)
-a = Kp*eye(6)*(xd(1:6) - x(1:6));
-b = Kv*eye(6)*x(7:12);
+function tau = calculatePdControlWithGd(theta_d, dtheta_d, x, Kv, Kp, Gd)
+theta= x(1:6,1);
+dtheta= x(7:12,1);
 
-tau = a - b + Gd;
+e = theta_d-theta; % position error
+de = dtheta_d - dtheta; % velocity error
+tau= Kp*e + Kv*de + Gd;
+
 end
