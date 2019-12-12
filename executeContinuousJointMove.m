@@ -22,7 +22,7 @@ end
 % q = [q; 0.45 -0.25 0.2 pi -pi/2 0];
 % q = [q; 0.45 -0.25 0.573 pi -pi/2 0];
 % q = [q; 0.45 0.25 0.573 pi -pi/2 0];
-% t = [0 2 4 6 8];
+% t = [0 1 2 3 4];
 
 ik = inverseKinematics;
 robot = createRigidTreeModel();

@@ -42,3 +42,8 @@ Please enter the time in seconds when the robot should arrive at this pose: 3
 Please enter the XYZ position of the end-effector in meters: [0.45 0.25 0.573]
 Please enter the orientation of the end-effector as ZYX euler angles in radians: [pi -pi/2 0]
 Please enter the time in seconds when the robot should arrive at this pose: 4
+
+Alternatively, both functions have the waypoints from the paper hard coded
+but commented out. Comment out the input code, and uncomment the wapoint
+arrays as indicated in the code in order to just run the simulation in 
+non-interactive mode.
